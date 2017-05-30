@@ -15,6 +15,7 @@ This is the start of a polymer application for helping users get educated on var
 3. Adding Small Tasks
 
 ## Installation (Command line)
+* `git clone git@github.com:beckybeauchamp1/polymer-menu-application.git`
 * `yarn` or `npm install`
 * `bower install`
 * `yarn global add polymer-cli` or `npm install -g polymer-cli`
