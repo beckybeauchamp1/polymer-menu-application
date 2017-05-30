@@ -1,0 +1,78 @@
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="menu-app-styles.html">
+
+<dom-module id="navigation-bar">
+    <template>
+        <style is="custom-style">
+            :host {
+                --my-custom-color: #C5CAE9;
+                --paper-tab-ink: var(--my-custom-color);
+                /* custom CSS property */
+                --paper-tabs-selection-bar-color: var(--divider-color);
+                /* custom CSS mixin */
+                --paper-tabs: {
+                    color: var(--text-primary-color);
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+            }
+            .container {
+                background: var(--dark-primary-color);
+                padding: 2vh;
+                font-size: 20px;
+                font-family: 'Droid Sans';
+            }
+
+        </style>
+        <!--Navigation using material design paper-tabs web component-->
+        <paper-tabs selected="{{page}}" attr-for-selected="name"
+          class="container" role="navigation">
+          <template is="dom-repeat" items="{{pages}}">
+              <paper-tab name="{{item.name}}" href="{{item.name}}">
+                  <template is="dom-if" if="{{checkLabel(item)}}">
+                      <iron-icon style="fill:#ffce6f" icon={{item.label}}>
+                      </iron-icon>
+                  </template>
+                  <template is="dom-if" if="{{!checkLabel(item)}}">
+                      {{item.label}}
+                  </template>
+              </paper-tab>
+          </template>
+        </paper-tabs>
+    </template>
+
+    <script>
+        class NavigationBar extends Polymer.Element {
+
+            static get is() { return 'navigation-bar'; }
+
+            static get properties() {
+                return {
+                    page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                    },
+                    pages: {
+                      type: Array,
+                      value() {
+                         return [
+                             { label: "icons:home", type: 'Html', name: ''},
+                             { label: 'Credit', type: 'String', name: 'credit' },
+                             { label: 'Retirement', type: 'String', name: 'retirement' },
+                             { label: 'Relevant News', type: 'String', name: 'news-feed' },
+                         ];
+                      }
+                   }
+                }
+            }
+            /* Used to check if label should be rendered as html (for icons) */
+            checkLabel(page) {
+                return page.type == 'Html';
+            }
+        }
+        
+        window.customElements.define(NavigationBar.is, NavigationBar);
+    </script>
+</dom-module>

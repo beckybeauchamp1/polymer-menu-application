@@ -1,0 +1,23 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/menu-app.html",
+  "fragments": [
+    "src/navigation-bar.html",
+    "src/view-home.html",
+    "src/view-credit.html",
+    "src/view-retirement.html",
+    "src/view-news-feed.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  }
+}

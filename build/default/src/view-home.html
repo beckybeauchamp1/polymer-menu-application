@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="menu-app-styles.html">
+
+<dom-module id="view-home">
+  <template>
+    <style include="menu-app-styles">
+
+    </style>
+  </template>
+
+  <script>
+    class ViewHome extends Polymer.Element {
+      static get is() { return 'view-home'; }
+    }
+
+    window.customElements.define(ViewHome.is, ViewHome);
+  </script>
+</dom-module>

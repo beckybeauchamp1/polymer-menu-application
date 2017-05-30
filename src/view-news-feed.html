@@ -1,0 +1,79 @@
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="menu-app-styles.html">
+
+<dom-module id="view-news-feed">
+    <template>
+        <style include="menu-app-styles">
+            :host {
+                padding: 20px;
+                background: var(--default-primary-color);
+                display: block;
+                width: 100%;
+                color: white;
+            }
+            .card {
+                width: 50%;
+                margin: auto;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                position: relative;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+            h2 {
+                font-family: 'Droid Sans';
+                color: var(--primary-text-color);
+                font-size: 1.8em;
+                font-weight: 600;
+            }
+            h2, p, a {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        </style>
+        <div class="card-container">
+            <iron-ajax
+                auto
+                url="https://newsapi.org/v1/articles?source=financial-times&sortBy=latest&apiKey=a443513720934ecfa62be2c2e6b45f4d"
+                handle-as="json"
+                last-response="{{response}}"
+                debounce-duration="300"></iron-ajax>
+
+            <template is="dom-repeat" items="{{response.articles}}">
+                <div class="card">
+                    <template is="dom-if" if="{{item.urlToImage}}">
+                        <img src="{{item.urlToImage}}" alt="article-item-image">
+                    </template>
+                    <h2>{{item.title}}</h2>
+                    <p>[[_parseDate(item.publishedAt)]]</p>
+                    <p>{{item.description}}</p>
+                    <a href="{{item.url}}">Read more</a>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        class ViewNewsFeed extends Polymer.Element {
+            static get is() {return 'view-news-feed'};
+
+            static get properties() {
+                return {
+                    response: {
+                      type: Object
+                   }
+                }
+            }
+
+            _parseDate(date) {
+                let dateObject = new Date(date);
+                return dateObject.toDateString();
+            }
+        }
+        window.customElements.define(ViewNewsFeed.is, ViewNewsFeed);
+    </script>
+
+</dom-module>

@@ -1,0 +1,33 @@
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="menu-app-styles.html">
+
+<dom-module id="view-home">
+  <template>
+    <style include="menu-app-styles">
+        :host {
+            text-align: center;
+            display: block;
+            font-size: 16px;
+        }
+        h1 {
+            padding-top: 20px;
+            font-family: 'Playfair Display';
+            font-size: 2.5rem;
+            text-shadow: -1px 0 #d7d7d6, 0 1px #d7d7d6, 1px 0 #d7d7d6, 0 -1px #d7d7d6;
+        }
+
+    </style>
+    <div class="header">
+        <h1>Planning for your future should be fun!</h1>
+    </div>
+  </template>
+
+  <script>
+    class ViewHome extends Polymer.Element {
+      static get is() { return 'view-home'; }
+    }
+
+    window.customElements.define(ViewHome.is, ViewHome);
+  </script>
+</dom-module>

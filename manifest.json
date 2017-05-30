@@ -1,0 +1,9 @@
+{
+  "name": "Polymer Menu Assignment",
+  "short_name": "Menu App",
+  "start_url": "./?homescreen=1",
+  "display": "standalone",
+  "theme_color": "#3f51b5",
+  "background_color": "#3f51b5",
+  "icons": []
+}
